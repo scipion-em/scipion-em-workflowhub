@@ -19,6 +19,10 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
+# Load requirements.txt
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
 setup(
     name='scipion-em-workflowhub',
     version=__version__,
@@ -29,7 +33,7 @@ setup(
     author_email='scipion@cnb.csic.es',
     keywords='scipion workflowhub scipion-3.0',
     packages=find_packages(),
-    install_requires=['rocrate', 'cwltool'],
+    install_requires=requirements,
     package_data={
        'workflowhub': ['WorkflowHub_logo.png', 'protocols.conf'],
     },
